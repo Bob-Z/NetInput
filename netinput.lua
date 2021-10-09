@@ -8,7 +8,7 @@ end
 
 
 socket = emu.file("rc") -- rwc for read, write, create
-socket:open("socket.127.0.0.1:1234")
+socket:open("socket.127.0.0.1:38100")
 
 is_read_key = true
 is_read_finished = false
@@ -45,8 +45,8 @@ function process_frame()
 				value=""
 				is_read_key = true
 				is_read_finished = false
-socket = emu.file("rc") -- rwc for read, write, create
-socket:open("socket.127.0.0.1:1234")
+--socket = emu.file("rc") -- rwc for read, write, create
+--socket:open("socket.127.0.0.1:1234")
 			end
 		end
 
