@@ -6,6 +6,10 @@
 
  "key" : {
 	"left" : "LEFT",
-	"right" : "RIGHT"
+	"right" : "RIGHT",
+	"up" : "LCONTROL",
+	"right" : "LALT",
+	"5" : "5",
+	"1" : "1"
 	}
 }
