@@ -1,0 +1,11 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "38100"
+	},
+
+ "key" : {
+	"left" : "LEFT",
+	"right" : "RIGHT"
+	}
+}
