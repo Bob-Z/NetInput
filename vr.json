@@ -1,15 +1,33 @@
 {
  "server" : {
 	"ip" : "127.0.0.1",
-	"port" : "38100"
+	"port" : "54321"
 	},
 
  "key" : {
-	"left" : "LEFT",
-	"right" : "RIGHT",
-	"up" : "LCONTROL",
-	"right" : "LALT",
-	"5" : "5",
-	"1" : "1"
+	"left" : {
+		"action" : "Paddle",
+		"value" : "-50000"
+		},
+	"right" : {
+		"action" : "Paddle",
+		"value" : "50000"
+		},
+	"up" : {
+		"action" : "P1 Pedal 1",
+		"value" : "50000"
+		},
+	"down" : {
+		"action" : "P1 Pedal 2",
+		"value" : "50000"
+		},
+	"5" : {
+		"action" : "Coin 1",
+		"value" : "1"
+		},
+	"1" : {
+		"action" : "1 Player Start",
+		"value" : "1"
+		}
 	}
 }

@@ -8,18 +8,22 @@ end
 
 
 socket = emu.file("rc") -- rwc for read, write, create
-socket:open("socket.127.0.0.1:38100")
+socket:open("socket.0.0.0.0:54321")
 
 is_read_key = true
 is_read_finished = false
 key = ""
 value = ""
 
+command = {}
+
 function process_frame()
-	repeat
-		local read = socket:read(1)
-		if #read ~= 0 then
-			if read == '\n' then
+	--repeat
+		local read = socket:read(100)
+		while #read ~= 0 do
+			print("read")
+			char = read:sub(1, 1)
+			if char == '\n' then
 				if is_read_key == true then
 					print("full key", key)
 					is_read_key = false
@@ -29,18 +33,18 @@ function process_frame()
 				end
 			else
 				if is_read_key == true then
-					key = key .. read
-					print("key", key)
+					key = key .. char
+					--print("key", key)
 				else
-					value = value .. read
-					print("value", value)
+					value = value .. char
+					--print("value", value)
 				end
 			end
 
 			if is_read_finished == true then
-					print("full key", key)
-					print("full value", value)
-				button[key]:set_value(tonumber((value)))
+				print("full key", key)
+				print("full value", value)
+				command[key] = value
 				key=""
 				value=""
 				is_read_key = true
@@ -48,10 +52,16 @@ function process_frame()
 --socket = emu.file("rc") -- rwc for read, write, create
 --socket:open("socket.127.0.0.1:1234")
 			end
+
+			read = read:sub(2)
 		end
 
-	until #read == 0
+	--until #read == 0
 
+	for k,v in pairs(command) do
+		--print("** push", k, v)
+		button[k]:set_value(tonumber((v)))
+	end
 end
 
 emu.register_frame_done(process_frame)
