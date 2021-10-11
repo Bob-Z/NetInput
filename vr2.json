@@ -21,11 +21,11 @@
 		"action" : "P1 Pedal 2",
 		"value" : "50000"
 		},
-	"6" : {
+	"Keypad *" : {
 		"action" : "Coin 1",
 		"value" : "1"
 		},
-	"2" : {
+	"Keypad /" : {
 		"action" : "1 Player Start",
 		"value" : "1"
 		}
