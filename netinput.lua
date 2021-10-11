@@ -6,9 +6,9 @@ for i, j in  ipairs(manager.machine.ioport.ports) do
  end
 end
 
-
+dest = os.getenv("NETINPUT_ADDR")
 socket = emu.file("rc") -- rwc for read, write, create
-socket:open("socket.0.0.0.0:54321")
+socket:open("socket." .. dest)
 
 is_read_key = true
 is_read_finished = false

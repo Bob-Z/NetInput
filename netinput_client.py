@@ -4,45 +4,51 @@ import sys
 import socket
 
 
-def send_event(key, data):
-    sock.sendall(key.encode('utf_8'))
-    sock.sendall("\n".encode('utf_8'))
-    sock.sendall(data.encode('utf_8'))
-    sock.sendall("\n".encode('utf_8'))
+def send_event(sock_index, key, data):
+    sock_list[sock_index].sendall(key.encode('utf_8'))
+    sock_list[sock_index].sendall("\n".encode('utf_8'))
+    sock_list[sock_index].sendall(data.encode('utf_8'))
+    sock_list[sock_index].sendall("\n".encode('utf_8'))
 
 
-print(sys.argv[1])
+first = True
+sock_list = []
+index = 0
+action_list = {}
 
-input_data = None
-with open(sys.argv[1]) as json_file:
-    input_data = json.load(json_file)
+for a in sys.argv:
+    if first is True:
+        first = False  # skip first arg (executable file name)
+    else:
+        input_json = None
+        with open(a) as json_file:
+            input_json = json.load(json_file)
+
+        sock_list.append(socket.socket(socket.AF_INET, socket.SOCK_STREAM))
+        print("Connect to", input_json["server"]["ip"], input_json["server"]["port"])
+        sock_list[index].connect((input_json["server"]["ip"], int(input_json["server"]["port"])))
+        print("Connected to", input_json["server"]["ip"], input_json["server"]["port"])
+
+        for i in input_json["key"]:
+            print(i)
+            action_list[pygame.key.key_code(i)] = [index, input_json["key"][i]["action"],
+                                                   input_json["key"][i]["value"]]
+        index = index + 1
 
 pygame.display.init
-pygame.font.init()
-
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print("Connect to", input_data["server"]["ip"], input_data["server"]["port"])
-sock.connect((input_data["server"]["ip"], int(input_data["server"]["port"])))
-
 main_window = pygame.display.set_mode((300, 0))
 pygame.display.set_caption('NetInput')
-
-action_list = {}
-value_list = {}
-for i in input_data["key"]:
-    action_list[pygame.key.key_code(i)] = input_data["key"][i]["action"]
-    value_list[pygame.key.key_code(i)] = input_data["key"][i]["value"]
 
 while True:
     event = pygame.event.wait()
 
     if event.type == pygame.KEYDOWN:
         if event.key in action_list:
-            send_event(action_list[event.key], value_list[event.key])
+            send_event(action_list[event.key][0], action_list[event.key][1], action_list[event.key][2])
 
     if event.type == pygame.KEYUP:
         if event.key in action_list:
-            send_event(action_list[event.key], "0")
+            send_event(action_list[event.key][0], action_list[event.key][1], "0")
 
     if event.type == pygame.QUIT:
         pygame.quit()
