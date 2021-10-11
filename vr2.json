@@ -1,0 +1,33 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "54322"
+	},
+
+ "key" : {
+	"keypad 4" : {
+		"action" : "Paddle",
+		"value" : "-50000"
+		},
+	"keypad 6" : {
+		"action" : "Paddle",
+		"value" : "50000"
+		},
+	"keypad 8" : {
+		"action" : "P1 Pedal 1",
+		"value" : "50000"
+		},
+	"keypad 2" : {
+		"action" : "P1 Pedal 2",
+		"value" : "50000"
+		},
+	"6" : {
+		"action" : "Coin 1",
+		"value" : "1"
+		},
+	"2" : {
+		"action" : "1 Player Start",
+		"value" : "1"
+		}
+	}
+}
