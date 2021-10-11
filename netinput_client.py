@@ -1,3 +1,5 @@
+#Key names are at https://github.com/pygame/pygame/blob/main/src_c/key.c , in SDL1_scancode_names
+
 import pygame
 import json
 import sys
