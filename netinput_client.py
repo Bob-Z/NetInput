@@ -54,6 +54,26 @@ for a in sys.argv:
                            "min": input_json["mouse"]["Y"]["min"],
                            "factor": input_json["mouse"]["X"]["factor"]}
 
+            if "left" in input_json["mouse"]:
+                mouse_left = {"index": index, "action": input_json["mouse"]["left"]["action"],
+                              "value": input_json["mouse"]["left"]["value"]}
+
+            if "right" in input_json["mouse"]:
+                mouse_right = {"index": index, "action": input_json["mouse"]["right"]["action"],
+                               "value": input_json["mouse"]["right"]["value"]}
+
+            if "middle" in input_json["mouse"]:
+                mouse_middle = {"index": index, "action": input_json["mouse"]["middle"]["action"],
+                                "value": input_json["mouse"]["middle"]["value"]}
+
+            if "up" in input_json["mouse"]:
+                mouse_up = {"index": index, "action": input_json["mouse"]["up"]["action"],
+                            "value": input_json["mouse"]["up"]["value"]}
+
+            if "down" in input_json["mouse"]:
+                mouse_down = {"index": index, "action": input_json["mouse"]["down"]["action"],
+                              "value": input_json["mouse"]["down"]["value"]}
+
         index = index + 1
 
 pygame.display.init
@@ -66,6 +86,9 @@ pygame.event.set_grab(True)
 
 current_mouse_x = 0
 current_mouse_y = 0
+
+send_mouse_x = False
+send_mouse_y = False
 
 send_date = datetime.datetime.now()
 
@@ -82,25 +105,70 @@ while True:
         if event.key in action_list:
             send_event(action_list[event.key][0], action_list[event.key][1], "0")
 
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.button == 1:
+            if mouse_left is not None:
+                send_event(mouse_left["index"], mouse_left["action"], mouse_left["value"])
+
+        if event.button == 2:
+            if mouse_middle is not None:
+                send_event(mouse_middle["index"], mouse_middle["action"], mouse_middle["value"])
+
+        if event.button == 3:
+            if mouse_right is not None:
+                send_event(mouse_right["index"], mouse_right["action"], mouse_right["value"])
+
+        if event.button == 4:
+            if mouse_up is not None:
+                send_event(mouse_up["index"], mouse_up["action"], mouse_up["value"])
+
+        if event.button == 5:
+            if mouse_down is not None:
+                send_event(mouse_down["index"], mouse_down["action"], mouse_down["value"])
+
+    if event.type == pygame.MOUSEBUTTONUP:
+        if event.button == 1:
+            if mouse_left is not None:
+                send_event(mouse_left["index"], mouse_left["action"], "0")
+
+        if event.button == 2:
+            if mouse_middle is not None:
+                send_event(mouse_middle["index"], mouse_middle["action"], "0")
+
+        if event.button == 3:
+            if mouse_right is not None:
+                send_event(mouse_right["index"], mouse_right["action"], "0")
+
+        if event.button == 4:
+            if mouse_up is not None:
+                send_event(mouse_up["index"], mouse_up["action"], "0")
+
+        if event.button == 5:
+            if mouse_down is not None:
+                send_event(mouse_down["index"], mouse_down["action"], "0")
+
     if event.type == pygame.MOUSEMOTION:
         rel = pygame.mouse.get_rel()
-        print(rel)
 
         if mouse_X is not None:
             current_mouse_x = max(min(current_mouse_x + (rel[0] * int(mouse_X["factor"])), int(mouse_X["max"])),
                                   int(mouse_X["min"]))
-            print(current_mouse_x)
+            send_mouse_x = True
 
         if mouse_Y is not None:
             current_mouse_y = max(min(current_mouse_y + (rel[1] * int(mouse_Y["factor"])), int(mouse_Y["max"])),
                                   int(mouse_Y["min"]))
-            print(current_mouse_y)
+            send_mouse_y = True
 
     if event.type == pygame.QUIT:
         pygame.quit()
 
     # Avoid spamming network
     if send_date < datetime.datetime.now():
-        send_event(mouse_X["index"], mouse_X["action"], str(current_mouse_x))
-        send_event(mouse_Y["index"], mouse_Y["action"], str(current_mouse_y))
+        if send_mouse_x is True:
+            send_event(mouse_X["index"], mouse_X["action"], str(current_mouse_x))
+            send_mouse_x = False
+        if send_mouse_y is True:
+            send_event(mouse_Y["index"], mouse_Y["action"], str(current_mouse_y))
+            send_mouse_y = False
         send_date = datetime.datetime.now() + datetime.timedelta(milliseconds=50)

@@ -8,10 +8,6 @@
 	"6" : {
 		"action" : "Coin 2",
 		"value" : "1"
-		},
-	"left ctrl" : {
-		"action" : "P2 Button 1",
-		"value" : "1"
 		}
 	},
 
@@ -28,6 +24,10 @@
 		"max" : "65535",
 		"min" : "-65535",
 		"factor" : "200"
+		},
+	"left" : {
+		"action" : "P2 Button 1",
+		"value" : "1"
 		}
 }
 }
