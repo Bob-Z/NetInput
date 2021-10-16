@@ -14,55 +14,42 @@ is_read_key = true
 is_read_finished = false
 key = ""
 value = ""
+read = ""
 
 command = {}
 
 function process_frame()
-	--repeat
-		local read = socket:read(100)
-		while #read ~= 0 do
-			print("read")
-			char = read:sub(1, 1)
-			if char == '\n' then
-				if is_read_key == true then
-					print("full key", key)
-					is_read_key = false
-				else
-					print("full value", value)
-					is_read_finished = true
-				end
-			else
-				if is_read_key == true then
-					key = key .. char
-					--print("key", key)
-				else
-					value = value .. char
-					--print("value", value)
-				end
-			end
+		read = read .. socket:read(100)
+		if #read ~= 0 then
+            while true do
+                i, j = string.find(read, "\n")
+                if i == nil then
+                    break
+                end
 
-			if is_read_finished == true then
-				print("full key", key)
-				print("full value", value)
-				command[key] = value
-				key=""
-				value=""
-				is_read_key = true
-				is_read_finished = false
---socket = emu.file("rc") -- rwc for read, write, create
---socket:open("socket.127.0.0.1:1234")
-			end
+                if is_read_key == true then
+                    is_read_key = false
+                    key = string.sub(read, 1, i-1)
+                    read = string.sub(read, j+1,-1)
+                else
+                    is_read_finished = true
+                    value = string.sub(read, 1, i-1)
+                    read = string.sub(read, j+1,-1)
+                end
 
-			read = read:sub(2)
-		end
-
-	--until #read == 0
+                if is_read_finished == true then
+                    command[key] = value
+                    key=""
+                    value=""
+                    is_read_key = true
+                    is_read_finished = false
+                end
+            end
+        end
 
 	for k,v in pairs(command) do
-		--print("** push", k, v)
 		button[k]:set_value(tonumber((v)))
 	end
 end
 
 emu.register_frame_done(process_frame)
-
