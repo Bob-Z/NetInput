@@ -1,33 +1,33 @@
 {
  "server" : {
-	"ip" : "127.0.0.1",
+	"ip" : "192.168.0.1",
 	"port" : "54321"
 	},
 
  "key" : {
-	"5" : {
-		"action" : "Coin 1",
+	"6" : {
+		"action" : "Coin 2",
 		"value" : "1"
 		},
 	"left ctrl" : {
-		"action" : "P1 Button 1",
+		"action" : "P2 Button 1",
 		"value" : "1"
 		}
 	},
 
 "mouse": {
 	"X" : {
-		"action" : "AD Stick X",
+		"action" : "AD Stick X 2",
 		"max" : "65535",
 		"min" : "-65535",
-		"factor" : "100"
+		"factor" : "200"
 		},
 
 	"Y" : {
-		"action" : "AD Stick Y",
+		"action" : "AD Stick Y 2",
 		"max" : "65535",
 		"min" : "-65535",
-		"factor" : "100"
+		"factor" : "200"
 		}
 }
 }
