@@ -21,6 +21,7 @@ index = 0
 action_list = {}
 mouse_X = None
 mouse_Y = None
+mouse = {}
 
 for a in sys.argv:
     if first is True:
@@ -55,24 +56,24 @@ for a in sys.argv:
                            "factor": input_json["mouse"]["X"]["factor"]}
 
             if "left" in input_json["mouse"]:
-                mouse_left = {"index": index, "action": input_json["mouse"]["left"]["action"],
-                              "value": input_json["mouse"]["left"]["value"]}
+                mouse["left"] = {"index": index, "action": input_json["mouse"]["left"]["action"],
+                                 "value": input_json["mouse"]["left"]["value"]}
 
             if "right" in input_json["mouse"]:
-                mouse_right = {"index": index, "action": input_json["mouse"]["right"]["action"],
-                               "value": input_json["mouse"]["right"]["value"]}
+                mouse["right"] = {"index": index, "action": input_json["mouse"]["right"]["action"],
+                                  "value": input_json["mouse"]["right"]["value"]}
 
             if "middle" in input_json["mouse"]:
-                mouse_middle = {"index": index, "action": input_json["mouse"]["middle"]["action"],
-                                "value": input_json["mouse"]["middle"]["value"]}
+                mouse["middle"] = {"index": index, "action": input_json["mouse"]["middle"]["action"],
+                                   "value": input_json["mouse"]["middle"]["value"]}
 
             if "up" in input_json["mouse"]:
-                mouse_up = {"index": index, "action": input_json["mouse"]["up"]["action"],
-                            "value": input_json["mouse"]["up"]["value"]}
+                mouse["up"] = {"index": index, "action": input_json["mouse"]["up"]["action"],
+                               "value": input_json["mouse"]["up"]["value"]}
 
             if "down" in input_json["mouse"]:
-                mouse_down = {"index": index, "action": input_json["mouse"]["down"]["action"],
-                              "value": input_json["mouse"]["down"]["value"]}
+                mouse["down"] = {"index": index, "action": input_json["mouse"]["down"]["action"],
+                                 "value": input_json["mouse"]["down"]["value"]}
 
         index = index + 1
 
@@ -95,6 +96,7 @@ send_date = datetime.datetime.now()
 while True:
     event = pygame.event.wait()
 
+    # Keyboard
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_ESCAPE:
             pygame.quit()
@@ -105,48 +107,29 @@ while True:
         if event.key in action_list:
             send_event(action_list[event.key][0], action_list[event.key][1], "0")
 
-    if event.type == pygame.MOUSEBUTTONDOWN:
+    # Mouse buttons
+    if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP:
         if event.button == 1:
-            if mouse_left is not None:
-                send_event(mouse_left["index"], mouse_left["action"], mouse_left["value"])
-
+            mouse_button_name = "left"
         if event.button == 2:
-            if mouse_middle is not None:
-                send_event(mouse_middle["index"], mouse_middle["action"], mouse_middle["value"])
-
+            mouse_button_name = "middle"
         if event.button == 3:
-            if mouse_right is not None:
-                send_event(mouse_right["index"], mouse_right["action"], mouse_right["value"])
-
+            mouse_button_name = "right"
         if event.button == 4:
-            if mouse_up is not None:
-                send_event(mouse_up["index"], mouse_up["action"], mouse_up["value"])
-
+            mouse_button_name = "up"
         if event.button == 5:
-            if mouse_down is not None:
-                send_event(mouse_down["index"], mouse_down["action"], mouse_down["value"])
+            mouse_button_name = "down"
+
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        if mouse_button_name in mouse:
+            send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"],
+                       mouse[mouse_button_name]["value"])
 
     if event.type == pygame.MOUSEBUTTONUP:
-        if event.button == 1:
-            if mouse_left is not None:
-                send_event(mouse_left["index"], mouse_left["action"], "0")
+        if mouse_button_name in mouse:
+            send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"], "0")
 
-        if event.button == 2:
-            if mouse_middle is not None:
-                send_event(mouse_middle["index"], mouse_middle["action"], "0")
-
-        if event.button == 3:
-            if mouse_right is not None:
-                send_event(mouse_right["index"], mouse_right["action"], "0")
-
-        if event.button == 4:
-            if mouse_up is not None:
-                send_event(mouse_up["index"], mouse_up["action"], "0")
-
-        if event.button == 5:
-            if mouse_down is not None:
-                send_event(mouse_down["index"], mouse_down["action"], "0")
-
+    # Mouse motion
     if event.type == pygame.MOUSEMOTION:
         rel = pygame.mouse.get_rel()
 
