@@ -28,6 +28,10 @@
 	"left" : {
 		"action" : "P2 Button 1",
 		"value" : "1"
+		},
+	"right" : {
+		"action" : "P2 Button 2",
+		"value" : "1"
 		}
 }
 }
