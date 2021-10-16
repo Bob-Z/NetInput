@@ -1,9 +1,11 @@
 # Key names are at https://github.com/pygame/pygame/blob/main/src_c/key.c , in SDL1_scancode_names
+import time
 
 import pygame
 import json
 import sys
 import socket
+import datetime
 
 
 def send_event(sock_index, key, data):
@@ -55,7 +57,7 @@ for a in sys.argv:
         index = index + 1
 
 pygame.display.init
-main_window = pygame.display.set_mode((300, 300))
+main_window = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('NetInput')
 
 # PyGame virtual mouse
@@ -64,6 +66,8 @@ pygame.event.set_grab(True)
 
 current_mouse_x = 0
 current_mouse_y = 0
+
+send_date = datetime.datetime.now()
 
 while True:
     event = pygame.event.wait()
@@ -86,13 +90,17 @@ while True:
             current_mouse_x = max(min(current_mouse_x + (rel[0] * int(mouse_X["factor"])), int(mouse_X["max"])),
                                   int(mouse_X["min"]))
             print(current_mouse_x)
-            send_event(mouse_X["index"], mouse_X["action"], str(current_mouse_x))
 
         if mouse_Y is not None:
             current_mouse_y = max(min(current_mouse_y + (rel[1] * int(mouse_Y["factor"])), int(mouse_Y["max"])),
                                   int(mouse_Y["min"]))
             print(current_mouse_y)
-            send_event(mouse_Y["index"], mouse_Y["action"], str(current_mouse_y))
 
     if event.type == pygame.QUIT:
         pygame.quit()
+
+    # Avoid spamming network
+    if send_date < datetime.datetime.now():
+        send_event(mouse_X["index"], mouse_X["action"], str(current_mouse_x))
+        send_event(mouse_Y["index"], mouse_Y["action"], str(current_mouse_y))
+        send_date = datetime.datetime.now() + datetime.timedelta(milliseconds=50)
