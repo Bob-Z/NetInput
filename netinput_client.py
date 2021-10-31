@@ -1,4 +1,7 @@
+#!/usr/bin/python3
+
 # Key names are at https://github.com/pygame/pygame/blob/main/src_c/key.c , in SDL1_scancode_names
+
 import time
 
 import pygame
@@ -37,10 +40,10 @@ for a in sys.argv:
         print("Connected to", input_json["server"]["ip"], input_json["server"]["port"])
 
         if "key" in input_json:
-            for i in input_json["key"]:
-                print(i)
-                action_list[pygame.key.key_code(i)] = [index, input_json["key"][i]["action"],
-                                                       input_json["key"][i]["value"]]
+            for key_name in input_json["key"]:
+                print(key_name)
+                action_list[pygame.key.key_code(key_name)] = [index, input_json["key"][key_name]["action"],
+                                                              input_json["key"][key_name]["value"]]
 
         if "mouse" in input_json:
             if "X" in input_json["mouse"]:
