@@ -167,4 +167,4 @@ while True:
         if send_mouse_y is True:
             send_event(mouse_Y["index"], mouse_Y["action"], str(current_mouse_y))
             send_mouse_y = False
-        send_date = datetime.datetime.now() + datetime.timedelta(milliseconds=50)
+        send_date = datetime.datetime.now() + datetime.timedelta(milliseconds=10)
