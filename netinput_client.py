@@ -99,10 +99,17 @@ send_date = datetime.datetime.now()
 while True:
     event = pygame.event.wait()
 
+    # Focus
+    if event.type == pygame.WINDOWFOCUSGAINED:
+        pygame.event.set_grab(True)
+
     # Keyboard
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_ESCAPE:
-            pygame.quit()
+            if pygame.event.get_grab() is True:
+                pygame.event.set_grab(False)
+            else:
+                pygame.quit()
         if event.key in action_list:
             send_event(action_list[event.key][0], action_list[event.key][1], action_list[event.key][2])
 
@@ -112,6 +119,9 @@ while True:
 
     # Mouse buttons
     if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP:
+        if pygame.event.get_grab() is False:
+            pygame.event.set_grab(True)
+
         if event.button == 1:
             mouse_button_name = "left"
         if event.button == 2:
