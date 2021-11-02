@@ -41,7 +41,7 @@ Running NetInput client:
 
 From now, when the NetInput has the focus, you could use keys described in JSON files (arrow keys and keypad arrows) to control both MAME instances.
 
-[![Alt text](https://img.youtube.com/vi/AYk97BY5BzU/0.jpg)](https://www.youtube.com/watch?v=AYk97BY5BzU)
+[![VF demo video](https://img.youtube.com/vi/AYk97BY5BzU/0.jpg)](https://www.youtube.com/watch?v=AYk97BY5BzU)
 
 - Point Blank: Using multiple mice with one MAME instance.
 
