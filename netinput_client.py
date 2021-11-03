@@ -85,8 +85,9 @@ main_window = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('NetInput')
 
 # PyGame virtual mouse
-pygame.mouse.set_visible(False)
-pygame.event.set_grab(True)
+if len(mouse) > 0:
+    pygame.mouse.set_visible(False)
+    pygame.event.set_grab(True)
 
 current_mouse_x = 0
 current_mouse_y = 0
@@ -101,12 +102,15 @@ while True:
 
     # Focus
     if event.type == pygame.WINDOWFOCUSGAINED:
-        pygame.event.set_grab(True)
+        if len(mouse) > 0:
+            pygame.mouse.set_visible(False)
+            pygame.event.set_grab(True)
 
     # Keyboard
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_ESCAPE:
             if pygame.event.get_grab() is True:
+                pygame.mouse.set_visible(True)
                 pygame.event.set_grab(False)
             else:
                 pygame.quit()
@@ -119,8 +123,6 @@ while True:
 
     # Mouse buttons
     if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP:
-        if pygame.event.get_grab() is False:
-            pygame.event.set_grab(True)
 
         if event.button == 1:
             mouse_button_name = "left"
@@ -135,6 +137,10 @@ while True:
 
     if event.type == pygame.MOUSEBUTTONDOWN:
         if mouse_button_name in mouse:
+            if pygame.event.get_grab() is False:
+                pygame.mouse.set_visible(False)
+                pygame.event.set_grab(True)
+
             send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"],
                        mouse[mouse_button_name]["value"])
 
