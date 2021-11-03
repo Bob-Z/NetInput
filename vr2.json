@@ -28,6 +28,22 @@
 	"Keypad /" : {
 		"action" : "1 Player Start",
 		"value" : "1"
-		}
+		},
+        "keypad 1" : {
+                "action" : "VR1 (Red)",
+                "value" : "1"
+                },
+        "keypad 3" : {
+                "action" : "VR2 (Blue)",
+                "value" : "1"
+                },
+        "keypad 7" : {
+                "action" : "VR3 (Yellow)",
+                "value" : "1"
+                },
+        "keypad 9" : {
+                "action" : "VR4 (Green)",
+                "value" : "1"
+                }
 	}
 }

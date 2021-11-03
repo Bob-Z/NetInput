@@ -28,6 +28,22 @@
 	"1" : {
 		"action" : "1 Player Start",
 		"value" : "1"
+		},
+	"z" : {
+		"action" : "VR1 (Red)",
+		"value" : "1"
+		},
+	"x" : {
+		"action" : "VR2 (Blue)",
+		"value" : "1"
+		},
+	"c" : {
+		"action" : "VR3 (Yellow)",
+		"value" : "1"
+		},
+	"v" : {
+		"action" : "VR4 (Green)",
+		"value" : "1"
 		}
 	}
 }
