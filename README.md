@@ -41,6 +41,8 @@ Running NetInput client:
 
 From now, when the NetInput has the focus, you could use keys described in JSON files (arrow keys and keypad arrows) to control both MAME instances.
 
+[![VF demo video](https://img.youtube.com/vi/AYk97BY5BzU/0.jpg)](https://www.youtube.com/watch?v=AYk97BY5BzU)
+
 - Point Blank: Using multiple mice with one MAME instance.
 
 Running Point Blank on computer 1 (with IP = 192.168.0.1, see JSON file to change this)
@@ -54,3 +56,6 @@ Note that the provided JSON files uses 192.168.0.1 as server address. You may ha
 `./netinput_client.py ptblank.json`
 
 You can now control the first cursor with computer 1's mouse, and the second cursor with computer 2's mouse.
+
+[![Point Blank demo video](https://img.youtube.com/vi/X3eC7ARrHzU/0.jpg)](https://www.youtube.com/watch?v=X3eC7ARrHzU)
+
