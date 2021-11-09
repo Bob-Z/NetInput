@@ -293,15 +293,12 @@ while True:
         for a in joy_hat:
             if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.hat:
                 if event.value == (0, 0) and a["action"] is not None:
-                    print("send 0")
                     send_event(a["index"], a["action"], "0")
                     a["action"] = None
                 else:
-                    print(event.value, (a["entry"]["x"], a["entry"]["y"]))
                     if event.value == (a["entry"]["x"], a["entry"]["y"]):
                         send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
                         a["action"] = a["entry"]["action"]
-                        print("send", a["action"])
 
     elif event.type == pygame.QUIT:
         pygame.quit()
