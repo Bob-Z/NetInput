@@ -1,0 +1,77 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "54321"
+	},
+
+ "joy" : {
+	"axis" : [
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 0,
+		"action" : "Paddle",
+		"factor" : "50000"
+		},
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 2,
+		"action" : "P1 Pedal 1",
+		"factor" : "-50000"
+		}
+	],
+	"button" : [
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 0,
+		"action" : "Coin 1",
+		"value" : "1"
+		},
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 1,
+		"action" : "1 Player Start",
+		"value" : "1"
+		},
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 7,
+		"action" : "P1 Pedal 2",
+		"value" : "50000"
+		}
+	],
+	"hat" : [
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 0,
+		"x" : 0,
+		"y" : 1,
+		"action" : "VR1 (Red)",
+		"value" : "1"
+		},
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 0,
+		"x" : 1,
+		"y" : 0,
+		"action" : "VR2 (Blue)",
+		"value" : "1"
+		},
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 0,
+		"x" : 0,
+		"y" : -1,
+		"action" : "VR3 (Yellow)",
+		"value" : "1"
+		},
+		{
+		"joy_guid" : "03000000a30600000cff000010010000",
+		"id" : 0,
+		"x" : -1,
+		"y" : 0,
+		"action" : "VR4 (Green)",
+		"value" : "1"
+		}
+	]
+	}
+}
