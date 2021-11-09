@@ -1,0 +1,95 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "54321"
+	},
+
+ "joy" : {
+	"axis" : [
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 0,
+		"action" : "AD Stick X",
+		"factor" : "50000"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 1,
+		"action" : "AD Stick Y",
+		"factor" : "50000"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 2,
+		"action" : "P1 Pedal 1",
+		"factor" : "50000"
+		}
+	],
+	"button" : [
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 4,
+		"action" : "Coin 1",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 5,
+		"action" : "1 Player Start",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 0,
+		"action" : "Missile",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 2,
+		"action" : "Machine Gun",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 3,
+		"action" : "Smoke",
+		"value" : "1"
+		}
+	],
+	"hat" : [
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 0,
+		"x" : 0,
+		"y" : 1,
+		"action" : "View 1",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 0,
+		"x" : 1,
+		"y" : 0,
+		"action" : "View 2",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 0,
+		"x" : 0,
+		"y" : -1,
+		"action" : "View 3",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"id" : 0,
+		"x" : -1,
+		"y" : 0,
+		"action" : "View 4",
+		"value" : "1"
+		}
+	]
+	}
+}
