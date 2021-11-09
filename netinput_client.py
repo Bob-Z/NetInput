@@ -10,6 +10,57 @@ import sys
 import socket
 import datetime
 
+joystick_list = []
+
+
+def init_joystick():
+    pygame.joystick.init()
+
+    joystick_count = pygame.joystick.get_count()
+
+    print("Number of joysticks: ", joystick_count)
+
+    for j in range(joystick_count):
+        joystick_list.append(pygame.joystick.Joystick(j))
+        joystick_list[j].init()
+
+        jid = joystick_list[j].get_instance_id()
+        print("JID", jid)
+
+        name = joystick_list[j].get_name()
+        print("name", name)
+
+        guid = joystick_list[j].get_guid()
+        print("guid", guid)
+
+        axes = joystick_list[j].get_numaxes()
+        print("axes", axes)
+
+        for a in range(axes):
+            axis = joystick_list[j].get_axis(a)
+            print("axis", a, "value", axis)
+
+        buttons = joystick_list[j].get_numbuttons()
+        print("buttons", buttons)
+
+        for b in range(buttons):
+            button = joystick_list[j].get_button(b)
+            print("button", b, "value", button)
+
+        hats = joystick_list[j].get_numhats()
+        print("hats", hats)
+
+        for h in range(hats):
+            hat = joystick_list[j].get_hat(h)
+            print("hat", h, "value", hat)
+
+        balls = joystick_list[j].get_numballs()
+        print("balls", balls)
+
+        for b in range(balls):
+            ball = joystick_list[j].get_ball(b)
+            print("ball", b, "value", ball)
+
 
 def send_event(sock_index, key, data):
     sock_list[sock_index].sendall(key.encode('utf_8'))
@@ -25,6 +76,12 @@ action_list = {}
 mouse_X = None
 mouse_Y = None
 mouse = {}
+joy_axis = []
+joy_ball = []
+joy_hat = []
+joy_button = []
+
+init_joystick()
 
 for a in sys.argv:
     if first is True:
@@ -78,16 +135,33 @@ for a in sys.argv:
                 mouse["down"] = {"index": index, "action": input_json["mouse"]["down"]["action"],
                                  "value": input_json["mouse"]["down"]["value"]}
 
+        if "joy" in input_json:
+            for key_name in input_json["joy"]:
+                if key_name == "axis":
+                    for entry in input_json["joy"]["axis"]:
+                        joy_axis.append({"index": index, "entry": entry, "value": 0.0, "ready_to_send": False})
+                #if key_name == "ball":
+                #    for entry in input_json["joy"]["ball"]:
+                #        joy_ball.append({"index": index, "entry": entry})
+                if key_name == "hat":
+                    for entry in input_json["joy"]["hat"]:
+                        joy_hat.append({"index": index, "entry": entry, "action": None})
+                if key_name == "button":
+                    for entry in input_json["joy"]["button"]:
+                        joy_button.append({"index": index, "entry": entry})
+
         index = index + 1
 
 pygame.display.init
-main_window = pygame.display.set_mode((400, 400))
 pygame.display.set_caption('NetInput')
 
 # PyGame virtual mouse
 if len(mouse) > 0:
+    main_window = pygame.display.set_mode((400, 400))
     pygame.mouse.set_visible(False)
     pygame.event.set_grab(True)
+else:
+    main_window = pygame.display.set_mode((300, 10))
 
 current_mouse_x = 0
 current_mouse_y = 0
@@ -107,7 +181,7 @@ while True:
             pygame.event.set_grab(True)
 
     # Keyboard
-    if event.type == pygame.KEYDOWN:
+    elif event.type == pygame.KEYDOWN:
         if event.key == pygame.K_ESCAPE:
             if pygame.event.get_grab() is True:
                 pygame.mouse.set_visible(True)
@@ -117,12 +191,12 @@ while True:
         if event.key in action_list:
             send_event(action_list[event.key][0], action_list[event.key][1], action_list[event.key][2])
 
-    if event.type == pygame.KEYUP:
+    elif event.type == pygame.KEYUP:
         if event.key in action_list:
             send_event(action_list[event.key][0], action_list[event.key][1], "0")
 
     # Mouse buttons
-    if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP:
+    elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP:
 
         if event.button == 1:
             mouse_button_name = "left"
@@ -135,7 +209,7 @@ while True:
         if event.button == 5:
             mouse_button_name = "down"
 
-    if event.type == pygame.MOUSEBUTTONDOWN:
+    elif event.type == pygame.MOUSEBUTTONDOWN:
         if mouse_button_name in mouse:
             if pygame.event.get_grab() is False:
                 pygame.mouse.set_visible(False)
@@ -144,12 +218,12 @@ while True:
             send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"],
                        mouse[mouse_button_name]["value"])
 
-    if event.type == pygame.MOUSEBUTTONUP:
+    elif event.type == pygame.MOUSEBUTTONUP:
         if mouse_button_name in mouse:
             send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"], "0")
 
     # Mouse motion
-    if event.type == pygame.MOUSEMOTION:
+    elif event.type == pygame.MOUSEMOTION:
         rel = pygame.mouse.get_rel()
 
         if mouse_X is not None:
@@ -162,7 +236,42 @@ while True:
                                   int(mouse_Y["min"]))
             send_mouse_y = True
 
-    if event.type == pygame.QUIT:
+    elif event.type == pygame.JOYAXISMOTION:
+        for a in joy_axis:
+            if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.axis and a["value"] != event.value:
+                a["value"] = event.value
+                a["ready_to_send"] = True
+                break
+    #elif event.type == pygame.JOYBALLMOTION:
+    #    for a in joy_ball:
+    #        if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.ball:
+    #            print("ball", event.joy, event.ball, event.value)
+    #            break
+    elif event.type == pygame.JOYBUTTONDOWN:
+        for a in joy_button:
+            if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.button:
+                send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
+                break
+    elif event.type == pygame.JOYBUTTONUP:
+        for a in joy_button:
+            if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.button:
+                send_event(a["index"], a["entry"]["action"], "0")
+                break
+    elif event.type == pygame.JOYHATMOTION:
+        for a in joy_hat:
+            if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.hat:
+                if event.value == (0, 0) and a["action"] is not None:
+                    print("send 0")
+                    send_event(a["index"], a["action"], "0")
+                    a["action"] = None
+                else:
+                    print(event.value, (a["entry"]["x"], a["entry"]["y"]))
+                    if event.value == (a["entry"]["x"], a["entry"]["y"]):
+                        send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
+                        a["action"] = a["entry"]["action"]
+                        print("send",a["action"])
+
+    elif event.type == pygame.QUIT:
         pygame.quit()
 
     # Avoid spamming network
@@ -173,4 +282,10 @@ while True:
         if send_mouse_y is True:
             send_event(mouse_Y["index"], mouse_Y["action"], str(current_mouse_y))
             send_mouse_y = False
+
+        for a in joy_axis:
+            if a["ready_to_send"] is True:
+                send_event(a["index"], a["entry"]["action"], str(a["value"] * float(a["entry"]["factor"])))
+                a["ready_to_send"] = False
+
         send_date = datetime.datetime.now() + datetime.timedelta(milliseconds=10)
