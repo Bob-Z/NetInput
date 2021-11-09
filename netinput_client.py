@@ -11,9 +11,13 @@ import socket
 import datetime
 
 joystick_list = []
+joystick_count = 0
 
 
 def init_joystick():
+    global joystick_count
+    global joystick_list
+
     pygame.joystick.init()
 
     joystick_count = pygame.joystick.get_count()
@@ -55,11 +59,35 @@ def init_joystick():
             print("hat", h, "value", hat)
 
         balls = joystick_list[j].get_numballs()
-        print("balls", balls)
+        print("balls (not supported yet)", balls)
 
         for b in range(balls):
             ball = joystick_list[j].get_ball(b)
             print("ball", b, "value", ball)
+
+
+def get_joy_entry(input_entry):
+    global joystick_count
+    global joystick_list
+
+    if "joy" not in input_entry:
+        if "joy_name" in input_entry:
+            for c in range(joystick_count):
+                if input_entry["joy_name"] == joystick_list[c].get_name():
+                    input_entry["joy"] = c
+                    print(input_entry["joy_name"], "is joystick", input_entry["joy"])
+                    break
+        elif "joy_guid" in input_entry:
+            for c in range(joystick_count):
+                if input_entry["joy_guid"] == joystick_list[c].get_guid():
+                    input_entry["joy"] = c
+                    print(input_entry["joy_guid"], "is joystick", input_entry["joy"])
+                    break
+        else:
+            print("You must provide a valid \"joy\", \"joy_name\" or \"joy_guid\" for joystick entries")
+            sys.exit(-1)
+
+    return input_entry
 
 
 def send_event(sock_index, key, data):
@@ -77,7 +105,7 @@ mouse_X = None
 mouse_Y = None
 mouse = {}
 joy_axis = []
-joy_ball = []
+# joy_ball = []
 joy_hat = []
 joy_button = []
 
@@ -139,16 +167,20 @@ for a in sys.argv:
             for key_name in input_json["joy"]:
                 if key_name == "axis":
                     for entry in input_json["joy"]["axis"]:
-                        joy_axis.append({"index": index, "entry": entry, "value": 0.0, "ready_to_send": False})
-                #if key_name == "ball":
+                        complete_entry = get_joy_entry(entry)
+                        joy_axis.append({"index": index, "entry": complete_entry, "value": 0.0, "ready_to_send": False})
+                # if key_name == "ball":
                 #    for entry in input_json["joy"]["ball"]:
-                #        joy_ball.append({"index": index, "entry": entry})
+                #        complete_entry = get_joy_entry(entry)
+                #        joy_ball.append({"index": index, "entry": complete_entry})
                 if key_name == "hat":
                     for entry in input_json["joy"]["hat"]:
-                        joy_hat.append({"index": index, "entry": entry, "action": None})
+                        complete_entry = get_joy_entry(entry)
+                        joy_hat.append({"index": index, "entry": complete_entry, "action": None})
                 if key_name == "button":
                     for entry in input_json["joy"]["button"]:
-                        joy_button.append({"index": index, "entry": entry})
+                        complete_entry = get_joy_entry(entry)
+                        joy_button.append({"index": index, "entry": complete_entry})
 
         index = index + 1
 
@@ -242,7 +274,7 @@ while True:
                 a["value"] = event.value
                 a["ready_to_send"] = True
                 break
-    #elif event.type == pygame.JOYBALLMOTION:
+    # elif event.type == pygame.JOYBALLMOTION:
     #    for a in joy_ball:
     #        if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.ball:
     #            print("ball", event.joy, event.ball, event.value)
@@ -269,7 +301,7 @@ while True:
                     if event.value == (a["entry"]["x"], a["entry"]["y"]):
                         send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
                         a["action"] = a["entry"]["action"]
-                        print("send",a["action"])
+                        print("send", a["action"])
 
     elif event.type == pygame.QUIT:
         pygame.quit()
