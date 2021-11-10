@@ -121,7 +121,15 @@ for a in sys.argv:
 
         sock_list.append(socket.socket(socket.AF_INET, socket.SOCK_STREAM))
         print("Connect to", input_json["server"]["ip"], input_json["server"]["port"])
-        sock_list[index].connect((input_json["server"]["ip"], int(input_json["server"]["port"])))
+        retry = True
+        while retry is True:
+            retry = False
+            try:
+                sock_list[index].connect((input_json["server"]["ip"], int(input_json["server"]["port"])))
+            except ConnectionRefusedError:
+                print("Connect failed, retry...")
+                time.sleep(1)
+                retry = True
         print("Connected to", input_json["server"]["ip"], input_json["server"]["port"])
 
         if "key" in input_json:
