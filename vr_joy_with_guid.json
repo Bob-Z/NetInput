@@ -43,32 +43,28 @@
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
-		"x" : 0,
-		"y" : 1,
+		"direction" : "Y",
 		"action" : "VR1 (Red)",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
-		"x" : 1,
-		"y" : 0,
+		"direction" : "X",
 		"action" : "VR2 (Blue)",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
-		"x" : 0,
-		"y" : -1,
+		"direction" : "-Y",
 		"action" : "VR3 (Yellow)",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
-		"x" : -1,
-		"y" : 0,
+		"direction" : "-X",
 		"action" : "VR4 (Green)",
 		"value" : "1"
 		}

@@ -300,13 +300,37 @@ while True:
     elif event.type == pygame.JOYHATMOTION:
         for a in joy_hat:
             if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.hat:
-                if event.value == (0, 0) and a["action"] is not None:
-                    send_event(a["index"], a["action"], "0")
-                    a["action"] = None
-                else:
-                    if event.value == (a["entry"]["x"], a["entry"]["y"]):
+                if event.value[0] == 1:
+                    if a["entry"]["direction"] == "-X":
+                        send_event(a["index"], a["entry"]["action"], "0")
+                    elif a["entry"]["direction"] == "X":
                         send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
-                        a["action"] = a["entry"]["action"]
+
+                elif event.value[0] == -1:
+                    if a["entry"]["direction"] == "X":
+                        send_event(a["index"], a["entry"]["action"], "0")
+                    if a["entry"]["direction"] == "-X":
+                        send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
+
+                elif event.value[0] == 0:
+                    if a["entry"]["direction"] == "-X" or a["entry"]["direction"] == "X":
+                        send_event(a["index"], a["entry"]["action"], "0")
+
+                if event.value[1] == 1:
+                    if a["entry"]["direction"] == "-Y":
+                        send_event(a["index"], a["entry"]["action"], "0")
+                    elif a["entry"]["direction"] == "Y":
+                        send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
+
+                elif event.value[1] == -1:
+                    if a["entry"]["direction"] == "Y":
+                        send_event(a["index"], a["entry"]["action"], "0")
+                    if a["entry"]["direction"] == "-Y":
+                        send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
+
+                elif event.value[1] == 0:
+                    if a["entry"]["direction"] == "-Y" or a["entry"]["direction"] == "Y":
+                        send_event(a["index"], a["entry"]["action"], "0")
 
     elif event.type == pygame.QUIT:
         pygame.quit()

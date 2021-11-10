@@ -10,19 +10,19 @@
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 0,
 		"action" : "AD Stick X",
-		"factor" : "50000"
+		"factor" : "100000"
 		},
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 1,
 		"action" : "AD Stick Y",
-		"factor" : "50000"
+		"factor" : "100000"
 		},
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 2,
 		"action" : "P1 Pedal 1",
-		"factor" : "50000"
+		"factor" : "100000"
 		}
 	],
 	"button" : [
@@ -61,32 +61,28 @@
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 0,
-		"x" : 0,
-		"y" : 1,
+		"direction" : "Y",
 		"action" : "View 1",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 0,
-		"x" : 1,
-		"y" : 0,
+		"direction" : "X",
 		"action" : "View 2",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 0,
-		"x" : 0,
-		"y" : -1,
+		"direction" : "-Y",
 		"action" : "View 3",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 0,
-		"x" : -1,
-		"y" : 0,
+		"direction" : "-X",
 		"action" : "View 4",
 		"value" : "1"
 		}
