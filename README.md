@@ -48,7 +48,7 @@ This is the same setup than for keyboard. The only difference is the JSON config
 
 `./netinput_client.py wingwar_A_joy.json wingwar_B_joy.json`
 
-[![WingWar demo video](https://img.youtube.com/vi/AYk97BY5BzU/0.jpg)](https://www.youtube.com/watch?v=1W3-yOFDW6Y)
+[![WingWar demo video](https://img.youtube.com/vi/1W3-yOFDW6Y/0.jpg)](https://www.youtube.com/watch?v=1W3-yOFDW6Y)
 
 ## Point Blank: Using multiple mice with one MAME instance.
 
