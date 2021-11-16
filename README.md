@@ -1,7 +1,7 @@
 # NetInput
 
 Netinput acts as a workaround for current MAME limitation with user inputs.
-- It allows to use multiple mice with one MAME instance (using 2 computers) in Linux.
+- It allows to use multiple mice with one MAME instance (using other computers mice) in Linux.
 - It allows to use the same keyboard on several instances of MAME in Linux.
 - It allows to use several joysticks/wheels with multiple MAME instance.
 
@@ -40,6 +40,7 @@ Running NetInput client:
 
 From now, when the NetInput has the focus, you could use keys described in JSON files (arrow keys and keypad arrows) to control both MAME instances.
 
+Click for video
 [![VF demo video](https://img.youtube.com/vi/AYk97BY5BzU/0.jpg)](https://www.youtube.com/watch?v=AYk97BY5BzU)
 
 ## Wing War: Using multiple joysticks/wheels for multiple MAME instances
@@ -48,6 +49,7 @@ This is the same setup than for keyboard. The only difference is the JSON config
 
 `./netinput_client.py wingwar_A_joy.json wingwar_B_joy.json`
 
+Click for video
 [![WingWar demo video](https://img.youtube.com/vi/1W3-yOFDW6Y/0.jpg)](https://www.youtube.com/watch?v=1W3-yOFDW6Y)
 
 ## Point Blank: Using multiple mice with one MAME instance.
@@ -64,5 +66,6 @@ Note that the provided JSON files uses 192.168.0.1 as server address. You may ha
 
 You can now control the first cursor with computer 1's mouse, and the second cursor with computer 2's mouse.
 
+Click for video
 [![Point Blank demo video](https://img.youtube.com/vi/X3eC7ARrHzU/0.jpg)](https://www.youtube.com/watch?v=X3eC7ARrHzU)
 
