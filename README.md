@@ -1,8 +1,9 @@
 # NetInput
 
-Netinput acts as a workaround for current MAME limitation with user inputs in Linux.
-It allows to use multiple mice with one MAME instance (using 2 computers).
-It allows to use the same keyboard on several instances of MAME.
+Netinput acts as a workaround for current MAME limitation with user inputs.
+- It allows to use multiple mice with one MAME instance (using other computers mice) in Linux.
+- It allows to use the same keyboard on several instances of MAME in Linux.
+- It allows to use several joysticks/wheels with multiple MAME instance.
 
 Netinput consists of 2 scripts, a server script and a client script.
 
@@ -14,18 +15,16 @@ It's called `netinput.lua`. It's configured through the NETINPUT_ADDR environnem
 
 It's called `netinput_client.py`. It uses Python and the PyGame library:
 
-Install PyGame:
-
-pip3 install pygame
+Install PyGame: pip3 install pygame
 
 PyGame version must be greater than 2.0.0
 
 It's configured with JSON file. Some samples configuration files are provided in this repository.
 
-Note that NetInput client grab input. To release this grab, push ESC key.
+With some configuration, NetInput client grabs inputs. To release this grab, push ESC key.
 
 
-- Virtua Formula: Using the same keyboard for multiple MAME instances
+## Virtua Formula: Using the same keyboard for multiple MAME instances
 
 Running 2 linked MAME instances:
 
@@ -37,13 +36,23 @@ Running 2 linked MAME instances:
 
 Running NetInput client:
 
-`./netinput_client.py vr.json vr2.json`
+`./netinput_client.py vr_A_key.json vr_B_key.json`
 
 From now, when the NetInput has the focus, you could use keys described in JSON files (arrow keys and keypad arrows) to control both MAME instances.
 
+Click for video
 [![VF demo video](https://img.youtube.com/vi/AYk97BY5BzU/0.jpg)](https://www.youtube.com/watch?v=AYk97BY5BzU)
 
-- Point Blank: Using multiple mice with one MAME instance.
+## Wing War: Using multiple joysticks/wheels for multiple MAME instances
+
+This is the same setup than for keyboard. The only difference is the JSON configuration files:
+
+`./netinput_client.py wingwar_A_joy.json wingwar_B_joy.json`
+
+Click for video
+[![WingWar demo video](https://img.youtube.com/vi/1W3-yOFDW6Y/0.jpg)](https://www.youtube.com/watch?v=1W3-yOFDW6Y)
+
+## Point Blank: Using multiple mice with one MAME instance.
 
 Running Point Blank on computer 1 (with IP = 192.168.0.1, see JSON file to change this)
 
@@ -57,5 +66,6 @@ Note that the provided JSON files uses 192.168.0.1 as server address. You may ha
 
 You can now control the first cursor with computer 1's mouse, and the second cursor with computer 2's mouse.
 
+Click for video
 [![Point Blank demo video](https://img.youtube.com/vi/X3eC7ARrHzU/0.jpg)](https://www.youtube.com/watch?v=X3eC7ARrHzU)
 
