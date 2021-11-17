@@ -1,0 +1,82 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "54321"
+	},
+
+ "joy" : {
+	"axis" : [
+		{
+		"joy" : 0,
+		"id" : 0,
+		"comment" : "Steering Wheel",
+		"action" : ":ADC.0,4095,155",
+		"factor" : "50000"
+		},
+		{
+		"joy" : 0,
+		"id" : 2,
+		"comment" : "Gas Pedal",
+		"action" : ":ADC.1,4095,157",
+		"factor" : "-100000"
+		}
+	],
+	"button" : [
+		{
+		"joy" : 0,
+		"id" : 4,
+		"comment" : "Coin 1",
+		"action" : ":INPUTS,4096,17",
+		"value" : "1"
+		},
+		{
+		"joy" : 0,
+		"id" : 0,
+		"comment" : "Clutch Pedal",
+		"action" : ":INPUTS,16,66",
+		"value" : "50000"
+		},
+		{
+		"joy" : 0,
+		"id" : 2,
+		"comment" : "Brake Pedal",
+		"action" : ":ADC.2,4095,158",
+		"value" : "50000"
+		}
+	],
+	"hat" : [
+		{
+		"joy" : 0,
+		"id" : 0,
+		"direction" : "Y",
+		"comment" : "Shift Up",
+		"action" : ":INPUTS,2,52",
+		"value" : "1"
+		},
+		{
+		"joy" : 0,
+		"id" : 0,
+		"direction" : "X",
+		"comment" : "Shift Right",
+		"action" : ":INPUTS,8,54",
+		"value" : "1"
+		},
+		{
+		"joy" : 0,
+		"id" : 0,
+		"direction" : "-Y",
+		"comment" : "Shift Down",
+		"action" : ":INPUTS,1,51",
+		"value" : "1"
+		},
+		{
+		"joy" : 0,
+		"id" : 0,
+		"direction" : "-X",
+		"comment" : "Shift Left",
+		"action" : ":INPUTS,4,53",
+		"value" : "1"
+		}
+	]
+	}
+}
