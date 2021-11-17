@@ -249,18 +249,18 @@ while True:
         if event.button == 5:
             mouse_button_name = "down"
 
-    elif event.type == pygame.MOUSEBUTTONDOWN:
-        if mouse_button_name in mouse:
-            if pygame.event.get_grab() is False:
-                pygame.mouse.set_visible(False)
-                pygame.event.set_grab(True)
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if mouse_button_name in mouse:
+                if pygame.event.get_grab() is False:
+                    pygame.mouse.set_visible(False)
+                    pygame.event.set_grab(True)
 
-            send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"],
-                       mouse[mouse_button_name]["value"])
+                send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"],
+                           mouse[mouse_button_name]["value"])
 
-    elif event.type == pygame.MOUSEBUTTONUP:
-        if mouse_button_name in mouse:
-            send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"], "0")
+        elif event.type == pygame.MOUSEBUTTONUP:
+            if mouse_button_name in mouse:
+                send_event(mouse[mouse_button_name]["index"], mouse[mouse_button_name]["action"], "0")
 
     # Mouse motion
     elif event.type == pygame.MOUSEMOTION:
