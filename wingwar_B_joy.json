@@ -9,19 +9,22 @@
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 0,
-		"action" : "AD Stick X",
+		"comment" : "AD Stick X",
+		"action" : ":STICKX,255,152",
 		"factor" : "100000"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 1,
-		"action" : "AD Stick Y",
+		"comment" : "AD Stick Y",
+		"action" : ":STICKY,255,153",
 		"factor" : "100000"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 2,
-		"action" : "P1 Pedal 1",
+		"comment" : "P1 Pedal 1",
+		"action" : ":THROTTLE,255,157",
 		"factor" : "100000"
 		}
 	],
@@ -29,31 +32,36 @@
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 4,
-		"action" : "Coin 1",
+		"comment" : "Coin 1",
+		"action" : ":IN.0,1,17",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 5,
-		"action" : "1 Player Start",
+		"comment" : "1 Player Start",
+		"action" : ":IN.0,16,7",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 0,
-		"action" : "Missile",
+		"comment" : "Missile",
+		"action" : ":IN.1,32,65",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 2,
-		"action" : "Machine Gun",
+		"comment" : "Machine Gun",
+		"action" : ":IN.1,16,64",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 3,
-		"action" : "Smoke",
+		"comment" : "Smoke",
+		"action" : ":IN.1,64,66",
 		"value" : "1"
 		}
 	],
@@ -62,28 +70,32 @@
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 0,
 		"direction" : "Y",
-		"action" : "View 1",
+		"comment" : "View 1",
+		"action" : ":IN.0,32,67",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 0,
 		"direction" : "X",
-		"action" : "View 2",
+		"comment" : "View 2",
+		"action" : ":IN.0,64,68",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 0,
 		"direction" : "-Y",
-		"action" : "View 3",
+		"comment" : "View 3",
+		"action" : ":IN.0,128,69",
 		"value" : "1"
 		},
 		{
 		"joy_name" : "DragonRise Inc. Generic USB Joystick",
 		"id" : 0,
 		"direction" : "-X",
-		"action" : "View 4",
+		"comment" : "View 4",
+		"action" : ":IN.1,1,70",
 		"value" : "1"
 		}
 	]

@@ -6,35 +6,41 @@
 
  "key" : {
 	"5" : {
-		"action" : "Coin 1",
+		"comment" : "Coin 1",
+		"action" : ":MISC,32,17",
 		"value" : "1"
 		},
 	"6" : {
-		"action" : "Coin 2",
+		"comment" : "Coin 2",
+		"action" : ":MISC,16,18",
 		"value" : "1"
 		},
 	"2" : {
-		"action" : "2 Players Start",
+		"comment" : "2 Players Start",
+		"action" : ":P2,128,8",
 		"value" : "1"
 		}
 	},
 
 "mouse": {
 	"X" : {
-		"action" : "Lightgun X 2",
+		"comment" : "Lightgun X 2",
+		"action" : ":LIGHT1_X,255,160",
 		"max" : "65535",
 		"min" : "-65535",
 		"factor" : "100"
 		},
 
 	"Y" : {
-		"action" : "Lightgun Y 2",
+		"comment" : "Lightgun Y 2",
+		"action" : ":LIGHT1_Y,255,161",
 		"max" : "65535",
 		"min" : "-65535",
 		"factor" : "100"
 		},
 	"left" : {
-		"action" : "P2 Button 1",
+		"comment" : "P2 Button 1",
+		"action" : ":P2,16,64",
 		"value" : "1"
 		}
 }

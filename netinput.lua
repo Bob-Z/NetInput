@@ -1,8 +1,14 @@
 button = {}
 for i, j in  ipairs(manager.machine.ioport.ports) do
  for field_name, field in pairs(j.fields) do
+  print("")
   print(field_name)
-  button[field_name] = field
+  --print("  tag", field.port.tag)
+  --print("  mask", field.mask)
+  --print("  type", field.type)
+  id = field.port.tag .. ',' .. field.mask .. ',' .. field.type
+  print("id:", id)
+  button[id] = field
  end
 end
 

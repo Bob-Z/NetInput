@@ -6,43 +6,53 @@
 
  "key" : {
 	"keypad 4" : {
-		"action" : "Paddle",
+		"comment" : "Paddle",
+                "action" : ":WHEEL,255,155",
 		"value" : "-50000"
 		},
 	"keypad 6" : {
-		"action" : "Paddle",
+		"comment" : "Paddle",
+                "action" : ":WHEEL,255,155",
 		"value" : "50000"
 		},
 	"keypad 8" : {
-		"action" : "P1 Pedal 1",
+		"comment" : "P1 Pedal 1",
+                "action" : ":ACCEL,255,157",
 		"value" : "50000"
 		},
 	"keypad 2" : {
-		"action" : "P1 Pedal 2",
+		"comment" : "P1 Pedal 2",
+                "action" : ":BRAKE,255,158",
 		"value" : "50000"
 		},
 	"Keypad *" : {
-		"action" : "Coin 1",
+		"comment" : "Coin 1",
+                "action" : ":IN.0,1,17",
 		"value" : "1"
 		},
 	"Keypad /" : {
-		"action" : "1 Player Start",
+		"comment" : "1 Player Start",
+                "action" : ":IN.0,16,7",
 		"value" : "1"
 		},
         "keypad 1" : {
-                "action" : "VR1 (Red)",
+		"comment" : "VR1 (Red)",
+                "action" : ":IN.0,32,66",
                 "value" : "1"
                 },
         "keypad 3" : {
-                "action" : "VR2 (Blue)",
+		"comment" : "VR2 (Blue)",
+                "action" : ":IN.0,64,67",
                 "value" : "1"
                 },
         "keypad 7" : {
-                "action" : "VR3 (Yellow)",
+		"comment" : "VR3 (Yellow)",
+                "action" : ":IN.0,128,68",
                 "value" : "1"
                 },
         "keypad 9" : {
-                "action" : "VR4 (Green)",
+		"comment" : "VR4 (Green)",
+                "action" : ":IN.1,1,69",
                 "value" : "1"
                 }
 	}

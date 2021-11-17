@@ -6,31 +6,36 @@
 
  "key" : {
 	"6" : {
-		"action" : "Coin 2",
+		"comment" : "Coin 2",
+		"action" : ":mainpcb:SERVICE12_A,4,18",
 		"value" : "1"
 		}
 	},
 
 "mouse": {
 	"X" : {
-		"action" : "AD Stick X 2",
+		"comment" : "AD Stick X 2",
+		"action" : ":mainpcb:ANALOG3,255,152",
 		"max" : "65535",
 		"min" : "-65535",
 		"factor" : "200"
 		},
 
 	"Y" : {
-		"action" : "AD Stick Y 2",
+		"comment" : "AD Stick Y 2",
+		"action" : ":mainpcb:ANALOG4,255,153",
 		"max" : "65535",
 		"min" : "-65535",
 		"factor" : "200"
 		},
 	"left" : {
-		"action" : "P2 Button 1",
+		"comment" : "P2 Button 1",
+		"action" : ":mainpcb:P2_A,1,64",
 		"value" : "1"
 		},
 	"right" : {
-		"action" : "P2 Button 2",
+		"comment" : "P2 Button 2",
+		"action" : ":mainpcb:P2_A,2,65",
 		"value" : "1"
 		}
 }

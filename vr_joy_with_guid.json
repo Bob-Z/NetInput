@@ -9,13 +9,15 @@
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
-		"action" : "Paddle",
+		"comment" : "Paddle",
+                "action" : ":WHEEL,255,155",
 		"factor" : "50000"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 2,
-		"action" : "P1 Pedal 1",
+		"comment" : "P1 Pedal 1",
+                "action" : ":ACCEL,255,157",
 		"factor" : "-50000"
 		}
 	],
@@ -23,19 +25,22 @@
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
-		"action" : "Coin 1",
+		"comment" : "Coin 1",
+                "action" : ":IN.0,1,17",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 1,
-		"action" : "1 Player Start",
+		"comment" : "1 Player Start",
+                "action" : ":IN.0,16,7",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 7,
-		"action" : "P1 Pedal 2",
+		"comment" : "P1 Pedal 2",
+                "action" : ":BRAKE,255,158",
 		"value" : "50000"
 		}
 	],
@@ -44,28 +49,32 @@
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
 		"direction" : "Y",
-		"action" : "VR1 (Red)",
+		"comment" : "VR1 (Red)",
+                "action" : ":IN.0,32,66",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
 		"direction" : "X",
-		"action" : "VR2 (Blue)",
+		"comment" : "VR2 (Blue)",
+                "action" : ":IN.0,64,67",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
 		"direction" : "-Y",
-		"action" : "VR3 (Yellow)",
+		"comment" : "VR3 (Yellow)",
+                "action" : ":IN.0,128,68",
 		"value" : "1"
 		},
 		{
 		"joy_guid" : "03000000a30600000cff000010010000",
 		"id" : 0,
 		"direction" : "-X",
-		"action" : "VR4 (Green)",
+		"comment" : "VR4 (Green)",
+                "action" : ":IN.1,1,69",
 		"value" : "1"
 		}
 	]
