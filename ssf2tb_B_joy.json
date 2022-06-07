@@ -7,112 +7,112 @@
  "joy" : {
 	"button" : [
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 6,
 		"comment" : "Coin 1",
 		"action" : ":IN2,4096,17",
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 7,
 		"comment" : "1 Player Start",
 		"action" : ":IN2,256,7",
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 0,
 		"comment" : "P1 Button 1",
 		"action" : ":IN0,16,64",
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 1,
 		"comment" : "P1 Button 2",
 		"action" : ":IN0,32,65",
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 2,
 		"comment" : "P1 Button 3",
 		"action" : ":IN0,64,66",
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 3,
 		"comment" : "P1 Button 4",
 		"action" : ":IN1,1,67",
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 4,
 		"comment" : "P1 Button 5",
 		"action" : ":IN1,2,68",
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 5,
 		"comment" : "P1 Button 6",
 		"action" : ":IN1,4,69",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 6,
 		"comment" : "Coin 2",
 		"action" : ":IN2,8192,18",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 7,
 		"comment" : "2 Player Start",
 		"action" : ":IN2,512,8",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
-		"id" : 0,
+		"joy" : 3,
+		"id" : 2,
 		"comment" : "P2 Button 1",
 		"action" : ":IN0,4096,64",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 1,
 		"comment" : "P2 Button 2",
 		"action" : ":IN0,8192,65",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 2,
 		"comment" : "P2 Button 3",
 		"action" : ":IN0,16384,66",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 3,
 		"comment" : "P2 Button 4",
 		"action" : ":IN1,16,67",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 4,
 		"comment" : "P2 Button 5",
 		"action" : ":IN1,32,68",
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 5,
 		"comment" : "P2 Button 6",
 		"action" : ":IN2,16384,69",
@@ -121,7 +121,7 @@
 	],
 	"hat" : [
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 0,
 		"direction" : "Y",
 		"comment" : "P1 Up",
@@ -129,7 +129,7 @@
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 0,
 		"direction" : "X",
 		"comment" : "P1 Right",
@@ -137,7 +137,7 @@
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 0,
 		"direction" : "-Y",
 		"comment" : "P1 Down",
@@ -145,7 +145,7 @@
 		"value" : "1"
 		},
 		{
-		"joy" : 0,
+		"joy" : 2,
 		"id" : 0,
 		"direction" : "-X",
 		"comment" : "P1 Left",
@@ -153,7 +153,7 @@
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 0,
 		"direction" : "Y",
 		"comment" : "P2 Up",
@@ -161,7 +161,7 @@
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 0,
 		"direction" : "X",
 		"comment" : "P2 Right",
@@ -169,7 +169,7 @@
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 0,
 		"direction" : "-Y",
 		"comment" : "P2 Down",
@@ -177,7 +177,7 @@
 		"value" : "1"
 		},
 		{
-		"joy" : 1,
+		"joy" : 3,
 		"id" : 0,
 		"direction" : "-X",
 		"comment" : "P2 Left",
