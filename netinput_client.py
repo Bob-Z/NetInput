@@ -288,6 +288,7 @@ while True:
     #            print("ball", event.joy, event.ball, event.value)
     #            break
     elif event.type == pygame.JOYBUTTONDOWN:
+        print("JOY",event.joy,"button",event.button)
         for a in joy_button:
             if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.button:
                 send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
