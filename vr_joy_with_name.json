@@ -9,39 +9,45 @@
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
 		"id" : 0,
-		"comment" : "Paddle",
+                "comment" : "Paddle",
                 "action" : ":WHEEL,255,155",
-		"factor" : "50000"
-		},
-		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
-		"id" : 2,
-		"comment" : "P1 Pedal 1",
+                "defvalue" : 128,
+                "minvalue" : 0,
+                "maxvalue" : 255
+                },
+                {
+                "joy" : "Saitek PLC Cyborg Force Rumble Pad",
+                "id" : 4,
+                "comment" : "P1 Pedal 1",
                 "action" : ":ACCEL,255,157",
-		"factor" : "-50000"
-		}
+                "defvalue" : 48,
+                "minvalue" : 1,
+                "maxvalue" : 255
+                },
+                {
+                "joy" : "Saitek PLC Cyborg Force Rumble Pad",
+                "id" : 5,
+                "comment" : "P1 Pedal 2",
+                "action" : ":BRAKE,255,158",
+                "defvalue" : 48,
+                "minvalue" : 1,
+                "maxvalue" : 255
+                }
 	],
 	"button" : [
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
- 		"id" : 0,
+ 		"id" : 10,
  		"comment" : "Coin 1",
                  "action" : ":IN.0,1,17",
  		"value" : "1"
  		},
 		{
 		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
-		"id" : 1,
+		"id" : 11,
 		"comment" : "1 Player Start",
                 "action" : ":IN.0,16,7",
 		"value" : "1"
-		},
-		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
-		"id" : 7,
-		"comment" : "P1 Pedal 2",
-                "action" : ":BRAKE,255,158",
-		"value" : "50000"
 		}
 	],
 	"hat" : [

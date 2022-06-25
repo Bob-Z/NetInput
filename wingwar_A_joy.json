@@ -7,58 +7,65 @@
  "joy" : {
 	"axis" : [
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 0,
 		"comment" : "AD Stick X",
 		"action" : ":STICKX,255,152",
-		"factor" : "100000"
+		"defvalue" : 128,
+		"minvalue" : 0,
+		"maxvalue" : 255,
+		"invert" : true
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 1,
 		"comment" : "AD Stick Y",
 		"action" : ":STICKY,255,153",
-		"factor" : "100000"
+		"defvalue" : 128,
+		"minvalue" : 0,
+		"maxvalue" : 255
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 2,
 		"comment" : "P1 Pedal 1",
 		"action" : ":THROTTLE,255,157",
-		"factor" : "100000"
+		"defvalue" : 1,
+		"minvalue" : 1,
+		"maxvalue" : 255
 		}
 	],
 	"button" : [
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
-		"id" : 4,
+		"joy" : 0,
+		"id" : 10,
 		"comment" : "Coin 1",
 		"action" : ":IN.0,1,17",
 		"value" : "1"
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
-		"id" : 5,
+		"joy" : 0,
+		"id" : 11,
 		"comment" : "1 Player Start",
 		"action" : ":IN.0,16,7",
 		"value" : "1"
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 0,
 		"comment" : "Missile",
 		"action" : ":IN.1,32,65",
 		"value" : "1"
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 2,
 		"comment" : "Machine Gun",
 		"action" : ":IN.1,16,64",
 		"value" : "1"
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 3,
 		"comment" : "Smoke",
 		"action" : ":IN.1,64,66",
@@ -67,7 +74,7 @@
 	],
 	"hat" : [
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 0,
 		"direction" : "Y",
 		"comment" : "View 1",
@@ -75,7 +82,7 @@
 		"value" : "1"
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 0,
 		"direction" : "X",
 		"comment" : "View 2",
@@ -83,7 +90,7 @@
 		"value" : "1"
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 0,
 		"direction" : "-Y",
 		"comment" : "View 3",
@@ -91,7 +98,7 @@
 		"value" : "1"
 		},
 		{
-		"joy_name" : "Saitek PLC Cyborg Force Rumble Pad",
+		"joy" : 0,
 		"id" : 0,
 		"direction" : "-X",
 		"comment" : "View 4",

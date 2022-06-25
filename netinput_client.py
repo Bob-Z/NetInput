@@ -281,23 +281,20 @@ while True:
             if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.axis and a["value"] != event.value:
                 a["value"] = event.value
                 a["ready_to_send"] = True
-                break
     # elif event.type == pygame.JOYBALLMOTION:
     #    for a in joy_ball:
     #        if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.ball:
     #            print("ball", event.joy, event.ball, event.value)
     #            break
     elif event.type == pygame.JOYBUTTONDOWN:
-        print("JOY",event.joy,"button",event.button)
+        print("JOY", event.joy, "button", event.button)
         for a in joy_button:
             if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.button:
                 send_event(a["index"], a["entry"]["action"], a["entry"]["value"])
-                break
     elif event.type == pygame.JOYBUTTONUP:
         for a in joy_button:
             if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.button:
                 send_event(a["index"], a["entry"]["action"], "0")
-                break
     elif event.type == pygame.JOYHATMOTION:
         for a in joy_hat:
             if a["entry"]["joy"] == event.joy and a["entry"]["id"] == event.hat:
@@ -345,9 +342,35 @@ while True:
             send_event(mouse_Y["index"], mouse_Y["action"], str(current_mouse_y))
             send_mouse_y = False
 
-        for a in joy_axis:
-            if a["ready_to_send"] is True:
-                send_event(a["index"], a["entry"]["action"], str(a["value"] * float(a["entry"]["factor"])))
-                a["ready_to_send"] = False
-
         send_date = datetime.datetime.now() + datetime.timedelta(milliseconds=10)
+
+    for a in joy_axis:
+        if a["ready_to_send"] is True:
+            defvalue = 0
+            if "defvalue" in a["entry"]:
+                defvalue = float(a["entry"]["defvalue"])
+
+            minvalue = -32000
+            if "minvalue" in a["entry"]:
+                minvalue = float(a["entry"]["minvalue"])
+
+            maxvalue = 32000
+            if "maxvalue" in a["entry"]:
+                maxvalue = float(a["entry"]["maxvalue"])
+
+            value = a["value"]
+
+            # Pygame gives analog controls from -1.0 to 1.0
+            percent = (value + 1.0) / 2.0
+
+            if value < 0.0:
+                value = 0.0
+
+            if "invert" in a["entry"] and a["entry"]["index"] is True:
+                value = 1.0 - value;
+
+            value_amplitude = maxvalue - minvalue
+            value = value_amplitude * percent + minvalue
+
+            send_event(a["index"], a["entry"]["action"], str(value))
+            a["ready_to_send"] = False

@@ -11,14 +11,18 @@
 		"id" : 0,
 		"comment" : "Steering Wheel",
 		"action" : ":ADC.0,4095,155",
-		"factor" : "50000"
+                "defvalue" : 2048,
+                "minvalue" : 640,
+                "maxvalue" : 3456
 		},
 		{
 		"joy" : 0,
-		"id" : 2,
+		"id" : 4,
 		"comment" : "Gas Pedal",
 		"action" : ":ADC.1,4095,157",
-		"factor" : "-100000"
+                "defvalue" : 0,
+                "minvalue" : 0,
+                "maxvalue" : 1552
 		}
 	],
 	"button" : [
