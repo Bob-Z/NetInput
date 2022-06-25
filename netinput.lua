@@ -2,12 +2,20 @@ button = {}
 for i, j in  ipairs(manager.machine.ioport.ports) do
  for field_name, field in pairs(j.fields) do
   print("")
-  print(field_name)
+  io.write("\"comment\" : \"",field_name,"\",\n")
   --print("  tag", field.port.tag)
   --print("  mask", field.mask)
   --print("  type", field.type)
   id = field.port.tag .. ',' .. field.mask .. ',' .. field.type
-  print("id:", id)
+  io.write("\"action\" : \"", id,"\"")
+  if field.is_analog == true then
+    io.write(",\n")
+    io.write("\"defvalue\" : ", field.defvalue,",\n")
+    io.write("\"minvalue\" : ", field.minvalue,",\n")
+    io.write("\"maxvalue\" : ", field.maxvalue,"\n")
+  else
+    io.write("\n")
+  end
   button[id] = field
  end
 end
