@@ -1,0 +1,50 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "54324"
+	},
+
+ "joy" : {
+	"axis" : [
+		{
+		"joy_name" : "8Bitdo SF30 Pro",
+		"id" : 0,
+		"comment" : "Paddle",
+                "action" : ":mainpcb:ANALOG1,255,155",
+		"defvalue" : 128,
+		"minvalue" : 0,
+		"maxvalue" : 255 
+		}
+	],
+	"button" : [
+		{
+		"joy_name" : "8Bitdo SF30 Pro",
+		"id" : 10,
+		"comment" : "Coin 1",
+                "action" : ":mainpcb:SERVICE12_A,4,17",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "8Bitdo SF30 Pro",
+		"id" : 11,
+		"comment" : "1 Player Start",
+                "action" : ":mainpcb:SERVICE12_A,16,7",
+		"value" : "1"
+		},
+		{
+		"joy_name" : "8Bitdo SF30 Pro",
+		"id" : 8,
+		"comment" : "P1 Pedal 2",
+                "action" : ":mainpcb:ANALOG3,255,158",
+		"value" : "255"
+		},
+		{
+		"joy_name" : "8Bitdo SF30 Pro",
+		"id" : 9,
+		"comment" : "P1 Pedal 1",
+                "action" : ":mainpcb:ANALOG2,255,157",
+		"value" : "255"
+		}
+	]
+	}
+}
