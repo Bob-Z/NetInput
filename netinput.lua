@@ -1,11 +1,11 @@
 button = {}
-for i, j in  ipairs(manager.machine.ioport.ports) do
+for i, j in  pairs(manager.machine.ioport.ports) do
  for field_name, field in pairs(j.fields) do
   print("")
   io.write("\"comment\" : \"",field_name,"\",\n")
-  --print("  tag", field.port.tag)
-  --print("  mask", field.mask)
-  --print("  type", field.type)
+  print("  tag", field.port.tag)
+  print("  mask", field.mask)
+  print("  type", field.type)
   id = field.port.tag .. ',' .. field.mask .. ',' .. field.type
   io.write("\"action\" : \"", id,"\"")
   if field.is_analog == true then
