@@ -135,8 +135,13 @@ for a in sys.argv:
         if "key" in input_json:
             for key_name in input_json["key"]:
                 print(key_name)
-                action_list[pygame.key.key_code(key_name)] = [index, input_json["key"][key_name]["action"],
-                                                              input_json["key"][key_name]["value"]]
+                if "reset_to" in input_json["key"][key_name]:
+	                action_list[pygame.key.key_code(key_name)] = [index, input_json["key"][key_name]["action"],
+                                                                             input_json["key"][key_name]["value"],
+                                                                             input_json["key"][key_name]["reset_to"]]
+                else:
+	                action_list[pygame.key.key_code(key_name)] = [index, input_json["key"][key_name]["action"],
+                                                                      input_json["key"][key_name]["value"],"0"]
 
         if "mouse" in input_json:
             if "X" in input_json["mouse"]:
@@ -229,11 +234,13 @@ while True:
             else:
                 pygame.quit()
         if event.key in action_list:
+            print(action_list[event.key][0], action_list[event.key][1], action_list[event.key][2])
             send_event(action_list[event.key][0], action_list[event.key][1], action_list[event.key][2])
 
     elif event.type == pygame.KEYUP:
         if event.key in action_list:
-            send_event(action_list[event.key][0], action_list[event.key][1], "0")
+            print(action_list[event.key][0], action_list[event.key][1], action_list[event.key][3])
+            send_event(action_list[event.key][0], action_list[event.key][1], action_list[event.key][3])
 
     # Mouse buttons
     elif event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEBUTTONUP:
