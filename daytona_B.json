@@ -1,0 +1,61 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "54322"
+	},
+
+ "key" : {
+	"keypad 4" : {
+		"comment" : "Paddle",
+		"action" : ":STEER,255,151",
+		"value" : "32",
+		"reset_to" : "128"
+		},
+	"keypad 6" : {
+		"comment" : "Paddle",
+		"action" : ":STEER,255,151",
+		"value" : "224",
+		"reset_to" : "128"
+		},
+	"keypad 8" : {
+		"comment" : "P1 Pedal 1",
+		"action" : ":ACCEL,255,153",
+		"value" : "50000"
+		},
+	"keypad 2" : {
+		"comment" : "P1 Pedal 2",
+		"action" : ":BRAKE,255,154",
+		"value" : "50000"
+		},
+	"Keypad *" : {
+		"comment" : "Coin 1",
+		"action" : ":IN0,1,17",
+		"value" : "1"
+		},
+	"Keypad /" : {
+		"comment" : "1 Player Start",
+		"action" : "IN0,16,7",
+		"value" : "1"
+		},
+	"keypad 1" : {
+		"comment" : "VR1 (Red)",
+		"action" : ":IN0,32,65",
+		"value" : "1"
+		},
+	"keypad 3" : {
+		"comment" : "VR2 (Blue)",
+		"action" : ":IN0,64,66",
+		"value" : "1"
+		},
+	"keypad 7" : {
+		"comment" : "VR3 (Yellow)",
+		"action" : ":IN0,128,67",
+		"value" : "1"
+		},
+	"keypad 9" : {
+		"comment" : "VR4 (Green)",
+		"action" : ":IN1,1,68",
+		"value" : "1"
+		}
+	}
+}

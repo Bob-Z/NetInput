@@ -1,0 +1,61 @@
+{
+ "server" : {
+	"ip" : "127.0.0.1",
+	"port" : "54321"
+	},
+
+ "key" : {
+	"left" : {
+		"comment" : "Paddle",
+		"action" : ":STEER,255,151",
+		"value" : "32",
+		"reset_to" : "128"
+		},
+	"right" : {
+		"comment" : "Paddle",
+		"action" : ":STEER,255,151",
+		"value" : "224",
+		"reset_to" : "128"
+		},
+	"up" : {
+		"comment" : "P1 Pedal 1",
+		"action" : ":ACCEL,255,153",
+		"value" : "50000"
+		},
+	"down" : {
+		"comment" : "P1 Pedal 2",
+		"action" : ":BRAKE,255,154",
+		"value" : "50000"
+		},
+	"5" : {
+		"comment" : "Coin 1",
+		"action" : ":IN0,1,17",
+		"value" : "1"
+		},
+	"1" : {
+		"comment" : "1 Player Start",
+		"action" : "IN0,16,7",
+		"value" : "1"
+		},
+	"z" : {
+		"comment" : "VR1 (Red)",
+		"action" : ":IN0,32,65",
+		"value" : "1"
+		},
+	"x" : {
+		"comment" : "VR2 (Blue)",
+		"action" : ":IN0,64,66",
+		"value" : "1"
+		},
+	"c" : {
+		"comment" : "VR3 (Yellow)",
+		"action" : ":IN0,128,67",
+		"value" : "1"
+		},
+	"v" : {
+		"comment" : "VR4 (Green)",
+		"action" : ":IN1,1,68",
+		"value" : "1"
+		}
+	}
+}
